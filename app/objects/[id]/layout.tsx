@@ -21,7 +21,7 @@ import Panel from "@/components/objects/panel/Panel";
 import style from "./layout.module.css";
 
 
-export default async function Layout({children, params}:{children : React.ReactNode, params:{id:string}}) {
+export default async function Layout({children, params}:{children : React.ReactNode, params:{id:string, dir?:string}}) {
     const data = await getData(params.id);
 
     return (

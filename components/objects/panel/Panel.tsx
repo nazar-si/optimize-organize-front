@@ -8,7 +8,7 @@ import Tabs from './tabs/Tabs';
 
 type Props = {
   children?: React.ReactNode;
-  data: Partial<IData>
+  data: Partial<IData>;
 }
 
 export default function Panel(props: Props) {

@@ -1,3 +1,4 @@
+
 import React from 'react'
 import style from "./task.module.css"
 import { Avatar } from "@mantine/core"
@@ -6,9 +7,11 @@ import { getNoun } from '@/utils/help'
 import { ITask } from './task.type'
 import { Tooltip } from '@mantine/core'
 import classNames from "classnames"
+import { usePathname } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 type Props = {
-    data: ITask
+    data: ITask,
 }
 const statusIcon = {
     "before":   <div className='flex items-center gap-2 text-xs text-gray-500'>Выполняется         <RotateClockwise2 size={16} /></div>,
@@ -20,13 +23,15 @@ const statusIcon = {
 export default function Task({data}: Props) {
     const localDate = new Date(new Date().toDateString());
 
+    const pathname = usePathname().split("/");
     const overdue = data.date.getTime() > new Date().getTime();
     const due = data.date.getTime() == localDate.getTime();
   return (
     <div className={classNames(
         style.wrapper, {
             [style.done]: data.done,
-            [style.overdue]: overdue
+            [style.overdue]: overdue,
+            [style.selected]: pathname[3] == data.id
         })}>
         <div className={style.title}>
             <div className={style.row}>
