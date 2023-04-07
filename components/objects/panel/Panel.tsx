@@ -5,6 +5,8 @@ import { Star, MapPin, Settings, Box } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 import Divider from '@/components/ui/Divider';
 import Tabs from './tabs/Tabs';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
 
 type Props = {
   children?: React.ReactNode;

@@ -9,7 +9,7 @@ async function getData(id: string) {
         type: "Жилое помещение",
         id: id,
         rating: 55,
-        taskCount: 5,
+        taskCount: 2,
         location: "ул. Колмогорова, 1, Москва",
         description: "Результат строительства, представляющий собой объемное надземное строительное сооружение, включающую в себя помещения, предназначенные для проживания и (или) деятельности людей, размещения производства, хранения продукции или содержания животных, а также сети и системы инженерно-технического обеспечения."
     }
@@ -23,7 +23,6 @@ import style from "./layout.module.css";
 
 export default async function Layout({children, params}:{children : React.ReactNode, params:{id:string, dir?:string}}) {
     const data = await getData(params.id);
-
     return (
       <div className={style.layout}>
         <Panel data={data}>
