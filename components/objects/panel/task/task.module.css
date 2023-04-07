@@ -1,0 +1,24 @@
+.wrapper{
+    @apply p-4 border-[1px] border-gray-300 rounded-md bg-white hover:bg-blue-50 hover:border-blue-300 cursor-pointer;
+    @apply shadow-md;
+    &.selected{
+        @apply border-blue-500;
+    }
+    .title{
+        .row{
+            @apply flex justify-between;
+            .name{
+                @apply font-semibold;
+            }
+        }
+        .description{
+            @apply text-sm line-clamp-2 mt-1;
+        }
+    }
+    .info{
+        @apply mt-2 flex justify-between items-center text-sm;
+    }
+    .counts, .attributes, .date{
+        @apply flex gap-2 items-center;
+    }
+}

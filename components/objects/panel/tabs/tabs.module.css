@@ -1,0 +1,60 @@
+.wrapper{
+    flex: 1;
+    min-height: 150px;
+    @apply flex;
+    flex-direction: column;
+    position: relative;
+    .header{
+        @apply flex justify-between;
+        @apply border-b-2 border-b-gray-300;
+        position: relative;
+        .tab{
+            flex: 1;
+            @apply pb-1 font-medium text-gray-500 transition-all;
+            &.selected{
+                @apply text-blue-500;
+            }
+        }
+        .line{
+            height: 2px;
+            @apply bg-blue-500;
+            position: absolute;
+            bottom: -2px;
+            transition: left .4s ease-in-out, right .4s ease-in-out 0.1s;
+        }
+    }
+    .tabBody{
+        overflow-y: scroll;
+        /* flex: 1; */
+        @apply pl-1 pb-2;
+        &::-webkit-scrollbar {
+            padding: 1px;
+            width: 14px;               
+        }
+          
+        
+        &::-webkit-scrollbar-thumb {
+            background-color: #0003;
+            border: rgb(249 250 251) 4px solid;
+            border-radius: 20px;
+            &:hover{
+                background-color: #0004;
+
+            }
+        }
+        position: absolute;
+        top: 2rem;
+        width: 100%;
+        bottom: 0;
+        opacity: 0;
+        transition: 0.3s;
+        pointer-events: none;
+        &.selected{
+            opacity: 1;
+            pointer-events: all;
+        }
+    }
+    .taskList{
+        @apply flex flex-col gap-2 my-2;
+    }
+}
