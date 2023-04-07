@@ -1,0 +1,16 @@
+.general{
+    width: 100%;
+    .icon{
+        @apply text-gray-500;
+    }
+}
+.settings{
+    @apply h-8 !p-2;
+}
+
+.selected{
+    @apply !border-blue-500 !text-blue-500;
+    .icon{
+        @apply text-blue-500;
+    }
+}
