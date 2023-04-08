@@ -14,7 +14,9 @@ export const typeToIcon = {
   3: <Movie size={16}/>
 }
 interface optionsTypes {
-  1: AType.ImageAtribute
+  1: AType.Image,
+  2: AType.File,
+  3: AType.Video
 }
 
 const options  = {
