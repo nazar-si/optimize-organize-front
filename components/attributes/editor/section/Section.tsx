@@ -7,7 +7,7 @@ import { Plus } from 'tabler-icons-react'
 type Props = {}
 
 export default function Section({}: Props) {
-
+    const a : Omit<>
   return (
     <section>
         <Button></Button>
