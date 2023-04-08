@@ -1,10 +1,12 @@
 import { NextResponse } from 'next/server';
 import { redirect } from 'next/navigation';
+import urlCodeJson from 'urlcode-json';
 
 export async function POST(request: Request) {
     
     // redirect('/')
     // const res = await request.json();
-    console.log(await request.json());
-    return NextResponse.json({hello: 'world'});
+    // console.log(request);
+    const text = await request.text();
+    return NextResponse.json({body: urlCodeJson.decode(text)});
 }
