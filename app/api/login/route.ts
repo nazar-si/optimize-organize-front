@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server';
 import { redirect } from 'next/navigation';
 import urlCodeJson from 'urlcode-json';
+import {url} from '../config.ts'
 
 export async function POST(request: Request) {
     

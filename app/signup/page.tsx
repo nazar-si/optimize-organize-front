@@ -25,10 +25,10 @@ const Page = () => {
                         </div>
                     </> */}
                     <>
-                        <Input placeholder="Логин"          label="Логин"><User size={18} /></Input>
-                        <Input placeholder="Почта"          label="Почта"><At size={18} /></Input>
-                        <Input placeholder="Имя"            label="Имя"><Signature size={18} /></Input>
-                        <Input placeholder="Пароль"         label="Пароль" type="password" ><Lock size={16}/></Input>
+                        <Input placeholder="Логин"          label="Логин" name="login"><User size={18} /></Input>
+                        <Input placeholder="Почта"          label="Почта" name="email"><At size={18} /></Input>
+                        <Input placeholder="Имя"            label="Имя" name="name"><Signature size={18} /></Input>
+                        <Input placeholder="Пароль"         label="Пароль" type="password" name="password"><Lock size={16}/></Input>
                         <Input placeholder="Повтор пароля" type="password" className="mb-4"><Lock size={16}/></Input>
                     </>
                     <Button>Зарегистрироваться</Button>
