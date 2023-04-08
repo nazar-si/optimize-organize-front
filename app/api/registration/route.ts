@@ -46,15 +46,15 @@ export async function POST(request: Request) {
         // console.log(await res.text())
         const data = await res.json();
         if(data.id !== undefined) {
-            console.log('success');
+            console.log('success reg', data.id);
             redirect('/login');
         }
-        redirect('/login');
+        redirect('/signup');
         // redirect('/')
     }
     catch (e) {
-        console.log(e);
-        redirect('/login');
+        // console.log(e);
+        redirect('/signup');
     }
 }
 
