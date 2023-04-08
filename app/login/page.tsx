@@ -8,7 +8,7 @@ const Page = () => {
     return (
         <div className="h-[100vh] w-[100%] flex items-center justify-center ">
             <Card >
-                <form className="w-96 flex flex-col items-stretch gap-2" method="POST" action="/api/login/">
+                <form className="w-96 flex flex-col items-stretch gap-2" method="POST" action="/api/login">
                     <h2 className="w-[100%] text-center font-semibold text-xl">Вход</h2>
                     <Input placeholder="Почта" label="Почта" name="email"><At size={18} /></Input>
                     <Input placeholder="Пароль" label="Пароль" type="password" className="mb-4" name="password"><Lock size={16}/></Input>
