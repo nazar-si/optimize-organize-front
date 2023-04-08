@@ -1,5 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/navigation";
+import Editor from "@/components/attributes/editor/Editor";
+import Topbar from "@/components/attributes/topbar/Topbar";
 
 export default function Page({
     params,
@@ -9,6 +11,7 @@ export default function Page({
     searchParams: { [key: string]: string | string[] | undefined };
   }) {
     return <div>
-        Object: {params.id}
+        <Topbar></Topbar>
+        <Editor></Editor>
     </div>;
   }

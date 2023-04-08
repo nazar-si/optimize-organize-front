@@ -1,4 +1,5 @@
 import Layout from "../layout";
+import Topbar from "@/components/attributes/topbar/Topbar";
 
 const Page = ({
     params,
@@ -9,7 +10,7 @@ const Page = ({
   }) => {
     return (
         <div>
-            Object: {params.id} at {params.dir}
+            <Topbar />
         </div>
     );
 }

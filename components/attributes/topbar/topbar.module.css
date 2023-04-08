@@ -1,0 +1,6 @@
+.topbar{
+    @apply flex justify-between m-4;
+}
+.row{
+    @apply flex;
+}
