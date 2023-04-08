@@ -1,6 +1,9 @@
 import Entry from "@/components/objects/register/Entry";
 import style from "./page.module.css";
 import { IData } from "./[id]/object.type";
+import Header from "@/components/objects/header/Header";
+import Input from "@/components/ui/Input";
+import Card from "@/components/ui/Card";
 
 async function getData() {
 
@@ -37,12 +40,18 @@ async function getData() {
 export default async function Home() {
   const data = await getData();
   return (
-    <main className={style.wrapper}>
-      <div className={style.list}>
-        {data.map((d, i) => (
-          <Entry data={d}></Entry>
-        ))}
-      </div>
-    </main>
+    <>
+      <Header/>
+      <main className={style.wrapper}>
+        <Card className={style.bar}>
+          <Input placeholder="Запрос для поиска"></Input>
+        </Card>
+        <div className={style.list}>
+          {data.map((d, i) => (
+            <Entry data={d}></Entry>
+          ))}
+        </div>
+      </main>
+    </>
   )
 }

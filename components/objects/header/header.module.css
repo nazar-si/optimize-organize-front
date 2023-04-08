@@ -1,0 +1,5 @@
+.wrapper{
+    @apply h-16;
+    @apply bg-white;
+    @apply border-b-[1px] shadow-sm border-b-gray-300; 
+}

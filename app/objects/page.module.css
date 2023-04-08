@@ -1,11 +1,10 @@
 .wrapper{
-    display: flex;
-    justify-content: center;
+    @apply flex flex-col items-center;
 }
 
 .list{
     width: 80%;
-    max-width: 1200px;
+    max-width: 1000px;
     @media screen and (max-width: 800px ){
         width: 90%;
     }
@@ -15,3 +14,8 @@
     @apply my-4;
 }
 
+.bar{
+    @apply my-4;
+    width: 80%;
+    max-width: 1000px;
+}
