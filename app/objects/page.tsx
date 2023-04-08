@@ -48,7 +48,7 @@ export default async function Home() {
         </Card>
         <div className={style.list}>
           {data.map((d, i) => (
-            <Entry data={d}></Entry>
+            <Entry key={i} data={d}></Entry>
           ))}
         </div>
       </main>
