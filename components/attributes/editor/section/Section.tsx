@@ -19,9 +19,7 @@ interface optionsTypes {
   3: AType.Video
 }
 
-const options  = {
-  1: 
-}
+const options : any  = {}
 
 
 type Props = {}
