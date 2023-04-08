@@ -1,6 +1,6 @@
 export type ID = number 
 export type FileID = number 
-
+export type Extra = "parent" | "permanent" | "single" // лишние для бэка ключи 
 export interface GeneralAttribute {
     ID: ID,
     CreatedAt: string,
@@ -9,8 +9,11 @@ export interface GeneralAttribute {
     name: string,
     type?: number, 
     data : any,
-    permanent?: boolean, // неудаляемый
-    parent?: "task" | "building" | undefined // может быть присоединен только к чему-то одному или ко всему (undefined)
+    permanent?: boolean,    // неудаляемый
+    parent?: "task" 
+            | "building" 
+            | undefined     // может быть присоединен только к чему-то одному или ко всему (undefined)
+    single?: boolean        // является ли единственным в данном контексте
 }
 
 export interface BuildingName extends GeneralAttribute {
