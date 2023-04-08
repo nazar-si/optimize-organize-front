@@ -4,9 +4,10 @@ import { IData } from "./[id]/object.type";
 import Header from "@/components/objects/header/Header";
 import Input from "@/components/ui/Input";
 import Card from "@/components/ui/Card";
+import getBuildings from "./api/getBuildings";
 
 async function getData() {
-
+  
   const data : Array<Partial<IData>> = [
     {
         imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
