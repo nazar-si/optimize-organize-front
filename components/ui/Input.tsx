@@ -10,10 +10,11 @@ type Props = {
     autocomplete?:string,
     onClick?:React.MouseEventHandler<HTMLInputElement>,
     onChange?:React.ChangeEventHandler<HTMLInputElement>,
-    value?:string 
+    value?:string,
+    name?:string
 }
 
-export default function Input({placeholder, label, type, className, children, autocomplete, value, onClick, onChange}: Props) {
+export default function Input({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, name}: Props) {
     const code = Math.floor(Math.random() * 1e8).toString();
     return (
         <div className={classNames(className, "my-1")}>
@@ -32,6 +33,7 @@ export default function Input({placeholder, label, type, className, children, au
                     placeholder={placeholder}
                     onClick={onClick}
                     onChange={onChange}
+                    name={name}
                     className='outline-none rounded-md m-0 pr-2 py-1 w-[100%]'
             /></label>
         </div>

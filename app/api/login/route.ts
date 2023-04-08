@@ -3,6 +3,8 @@ import { redirect } from 'next/navigation';
 
 export async function POST(request: Request) {
     
-    redirect('/')
+    // redirect('/')
+    // const res = await request.json();
+    console.log(await request.json());
+    return NextResponse.json({hello: 'world'});
 }
-
