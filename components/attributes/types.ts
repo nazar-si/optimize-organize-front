@@ -9,8 +9,11 @@ export interface GeneralAttribute {
     name: string,
     type?: number, 
     data : any,
-    permanent?: boolean, // неудаляемый
-    parent?: "task" | "building" | undefined // может быть присоединен только к чему-то одному или ко всему (undefined)
+    permanent?: boolean,    // неудаляемый
+    parent?: "task" 
+            | "building" 
+            | undefined     // может быть присоединен только к чему-то одному или ко всему (undefined)
+    single?: boolean        // является ли единственным в данном контексте
 }
 
 export interface FileAttribute extends GeneralAttribute {
