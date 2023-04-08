@@ -64,15 +64,7 @@
 .attributes{
     width: 100%;
     @apply flex gap-2;
-    .general{
-        flex: 1;
-        .icon{
-            @apply text-gray-500;
-        }
-    }
-    .settings{
-        @apply p-2;
-    }
+    
 }
 
 .description{

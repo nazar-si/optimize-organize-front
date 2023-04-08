@@ -5,10 +5,13 @@ import { Star, MapPin, Settings, Box } from 'tabler-icons-react';
 import Button from '@/components/ui/Button';
 import Divider from '@/components/ui/Divider';
 import Tabs from './tabs/Tabs';
+import { usePathname } from 'next/navigation';
+import Link from 'next/link';
+import Buttons from './buttons/Buttons';
 
 type Props = {
   children?: React.ReactNode;
-  data: Partial<IData>
+  data: Partial<IData>;
 }
 
 export default function Panel(props: Props) {
@@ -41,11 +44,7 @@ export default function Panel(props: Props) {
         </div>
       </section>
       <section className={style.attributes}>
-        <Button className={style.general}>
-          <div className={style.icon}><Box size={18}/>  </div>
-          Общие атрибуты
-        </Button>
-        <Button className={style.settings}><Settings size={16}/></Button>
+        <Buttons></Buttons>
       </section>
       <section className={style.description + " prose"}>
         <p className='line-clamp-3'>{data.description}</p>

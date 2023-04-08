@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Task from '../task/Task';
 
 type Props = {
-    children?: React.ReactNode
+    children?: React.ReactNode,
 }
 
 const tabs = [
@@ -43,10 +43,10 @@ export default function Tabs({children}:Props) {
                         peopleCount: 1,
                         attributesCount: 1,
                         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor temporibus illum aliquid numquam laboriosam in quis quaerat aspernatur possimus, dicta, ea, cum voluptates eos suscipit odit magni maiores placeat dolores!",
-                        date: new Date()
+                        date: new Date(),
                     }}/>
                     <Task data={{
-                        id: "1",
+                        id: "2",
                         done: true,
                         name: "Hello Done",
                         peopleCount: 3,
