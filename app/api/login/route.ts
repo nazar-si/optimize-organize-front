@@ -5,7 +5,6 @@ import {url} from '../config'
 
 export async function POST(request: Request) {
     const reqBody = await urlCodeJson.decode(await request.text());
-    console.log(reqBody)
     if(reqBody.email === undefined || reqBody.password === undefined) redirect('/login');
     const res = await fetch(url + 'auth/auth-user', {
         method: 'POST',
@@ -20,11 +19,8 @@ export async function POST(request: Request) {
     if(!res.ok || res.status!== 200) {
         redirect('/login');
     }
-    console.log('res successful')
     try {
-        // console.log(await res.text())
         const data = await res.json();
-        console.log(data)
         if(data.token !== undefined) {
             // NextResponse.next().cookies.set('token', data.token);
             console.log('success');
@@ -36,7 +32,6 @@ export async function POST(request: Request) {
         return NextResponse.json({hello: 'world'});
     }
     catch (e) {
-        console.log(e);
         redirect('/login');
     }
     // return NextResponse.json({hello: 'world'});

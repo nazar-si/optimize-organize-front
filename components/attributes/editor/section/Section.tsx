@@ -11,7 +11,6 @@ type Props = {
 
 export default function Section({data}: Props) {
     const text = JSON.stringify(data, null, ' ').replace(/: {/g, `${' '.repeat(5)}: \{`).replace(/: \{\n\s+/g, ': {').replace(/",\n\s+/g, ', ').replace(/"\n\s+\}/g, '}'); //Done all at once
-    console.log(text);
     return (
         <Card className={style.wrapper}>
             <div className={style.options}>

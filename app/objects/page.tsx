@@ -86,6 +86,7 @@ export default function Home() {
     fetchData()
   }, [])
   
+  console.log(data)
   return (
     <>
       <Header/>
