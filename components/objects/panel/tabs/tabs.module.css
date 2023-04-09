@@ -5,22 +5,18 @@
     flex-direction: column;
     position: relative;
     .header{
-        @apply flex justify-between;
-        @apply border-b-2 border-b-gray-300;
+        @apply flex items-center flex-col;
         position: relative;
         .tab{
             flex: 1;
-            @apply pb-1 font-medium text-gray-500 transition-all;
+            @apply px-2 py-1 m-2 font-medium text-gray-500 transition-all;
+            @apply border-[1px] border-gray-300 rounded-md bg-white ;
+            width: 100%; 
             &.selected{
-                @apply text-blue-500;
+                @apply text-blue-500 border-blue-500;
             }
-        }
-        .line{
-            height: 2px;
-            @apply bg-blue-500;
-            position: absolute;
-            bottom: -2px;
-            transition: left .4s ease-in-out, right .4s ease-in-out 0.1s;
+            z-index: 2;
+            @apply flex gap-2 items-center justify-center;
         }
     }
     .tabBody{
