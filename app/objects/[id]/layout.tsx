@@ -28,7 +28,7 @@ export default async function Layout({children, params}:{children : React.ReactN
     return (
       <div className={style.layout}>
         <Panel data={data}>
-          <Tabs></Tabs>
+          <Tabs id={params.id}></Tabs>
         </Panel>
         <main className={style.main}>{children}</main>
       </div>
