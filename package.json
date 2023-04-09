@@ -20,6 +20,7 @@
     "classnames": "^2.3.2",
     "eslint": "8.37.0",
     "eslint-config-next": "13.3.0",
+    "fuzzball": "^2.1.2",
     "next": "^13.2.0",
     "postcss": "8.4.21",
     "react": "18.2.0",

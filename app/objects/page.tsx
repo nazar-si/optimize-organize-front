@@ -9,6 +9,7 @@ import getBuildings from "./api/getBuildings";
 import Buildings from './buildings'
 import { url } from '../api/config'
 import { useEffect, useState } from "react";
+import { token_similarity_sort_ratio } from "fuzzball";
 
 
 
@@ -80,19 +81,32 @@ export default function Home() {
         window.location.href = '/login';
       }
       else {
-        setData(await getData(token))
+        let data = await getData(token)
+        setData(data.sort())
       }
     }
     fetchData()
   }, [])
   
-  console.log(data)
+  const [searchQuery, setSearchQuery] = useState("");
+  const Search = (value: string)=>{
+    setSearchQuery(value);
+    if (!value) 
+      data.sort();
+    let data_copy = data.slice();
+    data_copy.sort((a, b)=>{
+      let ac = token_similarity_sort_ratio(value, `${a.description} ${a.owner} ${a.name}`)
+      let bc = token_similarity_sort_ratio(value, `${b.description} ${b.owner} ${b.name}`)
+      return ac == bc ? 0: ac > bc? -1: 1
+    })
+    setData(data_copy)
+  }
   return (
     <>
       <Header/>
       <main className={style.wrapper}>
         <Card className={style.bar}>
-          <Input placeholder="Запрос для поиска"></Input>
+          <Input placeholder="Запрос для поиска" onChange={(e)=>Search(e.target.value)} value={searchQuery}></Input>
         </Card>
         <div className={style.list}>
             {data && data.map((d, i) => (
