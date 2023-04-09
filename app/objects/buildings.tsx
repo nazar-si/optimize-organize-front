@@ -1,6 +1,8 @@
 import { url } from '../api/config'
 import style from "./page.module.css";
 import Entry from "@/components/objects/register/Entry";
+import { Building } from './building.type';
+import { IData } from './[id]/object.type';
 
 export async function getData() {
     const res = await fetch(url + 'buildings/get-buildings', {
@@ -17,9 +19,18 @@ export async function getData() {
         return {buildings: []};
     }
     try {
-        const data = await res.json();
+        const data: {buildings: Building[]} = await res.json();
         if(data && data.buildings) {
-            console.log(data.buildings);
+            // console.log(data.buildings);
+            let buildings: Array<Partial<IData>> = []
+            data.buildings.forEach((building: Building) => {
+                buildings.push({
+                    id: building.ID,
+                    name: building.attributes.find(obj => {return obj.attribute.attr_type == -1}).data,
+                    
+                });
+            })
+            console.log('!', buildings)
             return { buildings: data.buildings };
         }
     }
