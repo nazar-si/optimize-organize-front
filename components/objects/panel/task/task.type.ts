@@ -1,5 +1,5 @@
 export type ITask = {
     name: string,
-    time: Date,
+    time: string,
     attributesCount: number 
 }

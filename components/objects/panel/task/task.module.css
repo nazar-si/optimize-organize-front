@@ -9,4 +9,7 @@
     .title{
         @apply px-2 py-1 flex items-center gap-2;
     }
+    .time, .attributes{
+        @apply flex items-center gap-2;
+    }
 }

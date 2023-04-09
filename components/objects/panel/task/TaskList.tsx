@@ -2,14 +2,15 @@ import React from 'react'
 import Task from './Task'
 import style from "./taskList.module.css"
 import { CircleCheck, CircleX, Calendar, RotateClockwise2 } from 'tabler-icons-react'
+import { ITask } from './task_old.type'
 
 type Props = {
 
 }
-
-const data = {
+const time = new Date().toLocaleDateString("ru-RU");
+const data : ITask = {
   name: "Task Name",
-  time : new Date(),
+  time : time,
   attributesCount: 5
 }
 export default function TaskList({}: Props) {

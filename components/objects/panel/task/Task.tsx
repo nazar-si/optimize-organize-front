@@ -47,14 +47,14 @@ export default function Task({className, data}: Props) {
             setChangeName(false);
         }} onBlur={lostFocus}/>
       </div>
-      <div onClick={Prevent} className={style.date}>
+      <div onClick={Prevent} className={style.time}>
         <Calendar size={16}/>
-        <DateTimePicker style={{border: "none"}} value={data.time} />
+        {/* <DateTimePicker style={{border: "none"}} value={data.time} /> */}
+        {data.time}
       </div>
       <div className={style.attributes}>
         <Box size={16}>
-          {getNoun(data.attributesCount, "атрибут", "атрибута", "атрибутов")}
-
+        {getNoun(data.attributesCount, "атрибут", "атрибута", "атрибутов")}
         </Box>
       </div>
     </Link>
