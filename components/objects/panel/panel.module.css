@@ -1,7 +1,7 @@
 .wrapper{
-    width: 30%;
+    width: 25%;
     max-width: 600px;
-    min-width: 400px;
+    min-width: 300px;
     @apply bg-gray-50;
     @apply border-r-gray-200 border-r-[1px];
     @apply p-4 flex flex-col gap-3 pb-0;
