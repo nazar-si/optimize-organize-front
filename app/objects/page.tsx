@@ -98,7 +98,7 @@ export default function Home() {
           {/* <Buildings /> */}
           <h1>Buildings</h1>
             <div className={style.list}>
-            {data.map((d, i) => (
+            {data && data.map((d, i) => (
                 <Entry key={i} data={d}></Entry>
             ))}
           </div>
