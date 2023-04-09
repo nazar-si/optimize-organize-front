@@ -33,3 +33,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# подсчет строчек кода
+cloc.exe 
+count_lines.bat

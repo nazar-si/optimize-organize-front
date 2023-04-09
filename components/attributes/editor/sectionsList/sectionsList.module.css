@@ -1,0 +1,9 @@
+.wrapper{
+    @apply flex flex-col;
+    width: 100%;
+    overflow-x: hidden;
+    flex: 1;
+    @apply pt-4;
+
+    overflow-y: scroll;
+}

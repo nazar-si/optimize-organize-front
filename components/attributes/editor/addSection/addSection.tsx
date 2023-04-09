@@ -6,7 +6,10 @@ import { Plus, ChevronRight, Photo, File3d, Movie, MapPin } from 'tabler-icons-r
 import Card from '@/components/ui/Card'
 import Input from '@/components/ui/Input'
 import classNames from 'classnames'
-import * as AType from "../../types"
+import proto, * as AType from "../../types"
+import { attributesActions } from '@/state/slices/attributeSlice'
+import { genAttribute } from '../../types'
+import { useAppDispatch } from '@/state/hooks'
 
 
 export const typeToIcon : {[key: string]: any}= {
@@ -16,30 +19,35 @@ export const typeToIcon : {[key: string]: any}= {
   4: <MapPin size={16}/>
 }
 
-const options: {[key: string]: any} = {
+const options: {[key: string]: {name: string, call: keyof AType.prototypesTypes}} = {
   1: {
-    name: "Фотография"
+    name: "Фотография",
+    call: "image"
   },
   2: {
-    name: "Файл"
+    name: "Файл",
+    call: "file",
   },
   3: {
-    name: "Видео"
+    name: "Видео",
+    call: "video"
   },
   4: {
-    name: "Локация"
+    name: "Карта",
+    call: "map"
   }
 }
-
-
-
 
 type Props = {}
 
 export default function Section({}: Props) {
   const inputRef = useRef<HTMLInputElement>(null);
   const [addStage, setAddStage] = useState(0);
+  const [name, setName] = useState("");
   const [selectedType, setSelectedType] = useState("");
+  const [nullNameError, setNullNameError] = useState(false);
+  const dispatch = useAppDispatch();
+
   const onAdd = ()=>{
     setAddStage(1);
   }
@@ -49,7 +57,19 @@ export default function Section({}: Props) {
     if (addStage == 1)
       inputRef.current!.focus();
   }
-  const Finish = ()=>{}
+  const Finish = ()=>{
+    if (!name.length)
+      return setNullNameError(true);
+    setAddStage(0);
+    setSelectedType("");
+    setName("");
+    let s = options[selectedType.toString()].call;
+    let prototype = genAttribute(name, proto[s]);
+    prototype.edit = true;
+    dispatch(
+      attributesActions.add({prototype})
+    )
+  }
   return (
     <section className={style.wrapper}>
         <Card className={classNames(style.card, {[style.noState]: true})}>
@@ -72,6 +92,9 @@ export default function Section({}: Props) {
           </div>
           <div className={classNames(style.row, {[style.hide]:addStage!=2})}>
             <Input
+              error={nullNameError}
+              value={name}
+              onChange={(e)=>{setName(e.target.value);setNullNameError(false)}}
               ref={inputRef}
               onKeyDown={(e)=>{
                 if (e.key == "Enter")

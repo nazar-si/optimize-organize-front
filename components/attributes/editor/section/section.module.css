@@ -1,0 +1,51 @@
+.wrapper{
+    animation: fly .5s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
+    position: relative;
+    z-index: 0;
+}
+
+@keyframes fly {
+    0%{
+        transform: translateX(100%) scaleY(0);
+        opacity: 0;
+        margin: 0;
+        height: 0;
+    }
+    100%{
+        transform: translate(0) scaleY(1);
+        opacity: 1;
+        margin: 1rem;
+    }
+}
+
+.wrapper{
+    @apply hover:border-blue-500;
+    .options{
+        position: absolute;
+        top: -32px;
+        height: 32px;
+        left: 1rem;
+        opacity: 0;
+        transition: 0.3s;
+        z-index: -2;
+        @apply border-[1px] border-blue-500 rounded-t-md;
+        @apply flex gap-1 items-end px-2;
+        @apply border-b-gray-50 bg-gray-50;
+        .button{
+            transform: scale(0.8) translateY(0.25rem);
+            transition: 0.3s;
+            box-shadow: 0 0 0 0px #08f;
+            @apply w-8 h-8 border-[1px] border-gray-300 bg-white flex items-center justify-center rounded-md;
+            &:hover{
+                transform: scale(1) translateY(0.25rem);
+                box-shadow: 0 0 0 .25rem #08f0;
+                @apply border-blue-500 bg-blue-500 text-white;
+            }
+        }
+    }
+    &:hover .options{
+        opacity: 1;
+    }
+}

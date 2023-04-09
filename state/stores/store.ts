@@ -1,9 +1,11 @@
 import { configureStore, ThunkAction, Action } from "@reduxjs/toolkit";
 import objectSlice from "../slices/objectSlice";
+import attributeSlice from "../slices/attributeSlice";
 
 export const store = configureStore({
     reducer: {
-        objectReducer: objectSlice
+        objectReducer: objectSlice,
+        attributesReducer: attributeSlice
     },
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({ serializableCheck: false }),

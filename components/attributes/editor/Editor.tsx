@@ -5,17 +5,20 @@ import React from 'react'
 import style from "./editor.module.css"
 import { Plus } from 'tabler-icons-react'
 import Button from '@/components/ui/Button'
-import Section from './addSection/addSection'  
+import { GeneralAttribute } from '../types'
+import DataUpload from './DataUpload'
+import SectionsList from './sectionsList/SectionsList'
 
-type Props = {}
+type Props = {
+  upload: Array<GeneralAttribute>
+}
 
-export default function Editor({}: Props) {
+export default function Editor({upload}: Props) {
   
   return (
-    <Provider store={store}>
-      <div className={style.wrapper}>
-          <Section/>
-      </div>
+    <Provider store={store}> 
+      <DataUpload data={upload}/>
+      <SectionsList/>
     </Provider>
   )
 }

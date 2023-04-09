@@ -1,5 +1,6 @@
 .wrapper{
     @apply m-4;
+    margin-bottom: 50vh;
 }
 .card{
     @apply flex justify-center items-center flex-col;

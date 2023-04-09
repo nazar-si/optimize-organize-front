@@ -1,11 +1,13 @@
-.wrapper{
-    @apply flex flex-col gap-4;
-    width: 100%;
-}
+
 
 .add{
     @apply mx-4;
     .button{
         width: 100%;
     }
+}
+
+.wrapper{
+    height: 100vh;
+    @apply flex flex-col;
 }
