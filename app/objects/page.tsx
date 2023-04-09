@@ -1,3 +1,4 @@
+'use client'
 import Entry from "@/components/objects/register/Entry";
 import style from "./page.module.css";
 import { IData } from "./[id]/object.type";
@@ -6,10 +7,39 @@ import Input from "@/components/ui/Input";
 import Card from "@/components/ui/Card";
 import getBuildings from "./api/getBuildings";
 import Buildings from './buildings'
+import { url } from '../api/config'
+import { useEffect, useState } from "react";
 
 
-async function getData() {
 
+async function getData(token: string) {
+  const res = await fetch('/api/getBuildings', {
+    method: 'POST',
+    headers: {
+      // 'Access-Control-Allow-Headers': 'Content-Type',
+      // 'Access-Control-Allow-Credentials': true,
+      'Content-Type': 'application/json',
+      // 'Accept': '*/*',
+      // 'Access-Control-Allow-Credentials': 'true'
+    },
+    body: JSON.stringify({
+      token: token
+    })
+  })
+  if(!res.ok) {
+    return [];
+  }
+  // console.log('!', await res.text())
+  try {
+    const data: Array<Partial<IData>> = await res.json();
+    console.log(data)
+    return data;
+  }
+  catch(e) {
+    console.log(e);
+    return [];
+  }
+  return [];
   const data : Array<Partial<IData>> = [
     {
         imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
@@ -40,8 +70,22 @@ async function getData() {
 }
 
 
-export default async function Home() {
-  const data = await getData();
+export default function Home() {
+  // window.localStorage.getItem('token')
+  const [data, setData] = useState<Array<Partial<IData>>>([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      const token = window.localStorage.getItem('token');
+      if(!token && token !== '') {
+        window.location.href = '/login';
+      }
+      else {
+        setData(await getData(token))
+      }
+    }
+    fetchData()
+  }, [])
+  
   return (
     <>
       <Header/>
@@ -50,7 +94,7 @@ export default async function Home() {
           <Input placeholder="Запрос для поиска"></Input>
         </Card>
         <div className={style.list}>
-          {/* <Buildings buildings={[]} /> */}
+          {/* <Buildings /> */}
           <h1>Buildings</h1>
             <div className={style.list}>
             {data.map((d, i) => (
