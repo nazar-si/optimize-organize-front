@@ -2,7 +2,7 @@
 import React, { useState } from 'react'
 import style from "./tabs.module.css";
 import classNames from 'classnames';
-import Task from '../task/Task';
+import Task from '../task/Task_old';
 import { Checkbox, ClipboardData, DeviceComputerCamera, Users } from 'tabler-icons-react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';

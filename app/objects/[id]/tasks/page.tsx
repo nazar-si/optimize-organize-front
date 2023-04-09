@@ -1,7 +1,9 @@
+import TaskList from "@/components/objects/panel/task/TaskList";
+
 const Page = () => {
     return (
         <div>
-            Enter
+            <TaskList></TaskList>
         </div>
     );
 }
