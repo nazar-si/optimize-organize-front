@@ -1,6 +1,5 @@
 "use client"
-import { Provider } from 'react-redux'
-import { store } from '@/state/stores/store'
+
 import React from 'react'
 import style from "./editor.module.css"
 import { Plus } from 'tabler-icons-react'
@@ -16,9 +15,9 @@ type Props = {
 export default function Editor({upload}: Props) {
   
   return (
-    <Provider store={store}> 
+    <> 
       <DataUpload data={upload}/>
       <SectionsList/>
-    </Provider>
+    </>
   )
 }

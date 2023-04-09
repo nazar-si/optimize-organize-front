@@ -1,4 +1,6 @@
 'use client'
+import { Provider } from 'react-redux'
+import { store } from '@/state/stores/store'
 import { IData } from "./object.type";
 import Tabs from "../../../components/objects/panel/tabs/Tabs";
 import { url } from "@/app/api/config";
@@ -83,7 +85,10 @@ export default function Layout({children, params}:{children : React.ReactNode, p
         <Panel data={data}>
           <Tabs id={params.id}></Tabs>
         </Panel>
-        <main className={style.main}>{children}</main>
+        
+        <Provider store={store}>
+          <main className={style.main}>{children}</main>
+        </Provider>
       </div>
     )
   }

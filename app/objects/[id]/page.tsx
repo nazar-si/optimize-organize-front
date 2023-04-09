@@ -6,6 +6,8 @@ import Topbar from "@/components/attributes/topbar/Topbar";
 import { GeneralAttribute } from "@/components/attributes/types";
 import { IData } from "./object.type";
 import { useEffect, useState } from "react";
+import { useAppDispatch } from "@/state/hooks";
+import { attributesActions } from "@/state/slices/attributeSlice";
 
 type dataType = {
   basicData: {
@@ -54,12 +56,17 @@ export default function Page({
     searchParams: { [key: string]: string | string[] | undefined };
   }) {
     const [data, setData] = useState<dataType>(proto);
+    const dispatch = useAppDispatch();
     useEffect(() => {
-      getData(params.id, window.localStorage.getItem('token')).then(data => setData(data));
+      getData(params.id, window.localStorage.getItem('token')).then(data => {
+        dispatch(attributesActions.load(data.attributes));
+        setData(data);
+      });
     }, [params.id]);
-    useEffect(() => {
-      console.log(data)
-    }, [data]);
+    useEffect(()=>{
+      console.log(data);
+    }, [data])
+
     return <div className="flex flex-col h-[100vh]">
         <Topbar passName={data.basicData.name}></Topbar>
         <Editor upload={data.attributes /* Загружаем значения атрибутов в редактор */}></Editor> 
