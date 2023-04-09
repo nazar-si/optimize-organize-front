@@ -1,0 +1,10 @@
+.wrapper{
+    @apply m-4;
+}
+.card{
+    @apply flex justify-center;
+    @apply focus-within:border-blue-500;
+    &.noState{
+        @apply bg-transparent shadow-none border-dashed;
+    }
+}

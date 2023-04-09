@@ -65,7 +65,7 @@ export interface Image extends GeneralAttribute {
     data: FileID,
     type: 1
 }
-export interface FileAttribute extends GeneralAttribute {
+export interface File extends GeneralAttribute {
     data: FileID,
     type: 2
 }

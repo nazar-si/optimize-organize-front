@@ -7,9 +7,10 @@ import Section from './section/Section'
 type Props = {}
 
 export default function Editor({}: Props) {
+  
   return (
     <div className={style.wrapper}>
-        <Section></Section>
+        <Section/>
     </div>
   )
 }
