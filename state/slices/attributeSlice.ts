@@ -1,7 +1,7 @@
 import { GeneralAttribute, ID } from "@/components/attributes/types";
 import { createSlice } from "@reduxjs/toolkit";
-import type {Action} from "@reduxjs/toolkit"
-import { prototype } from "events";
+import { enableMapSet } from 'immer'
+enableMapSet()
 
 export type stateType = {
     attributes: Map<ID, GeneralAttribute>; 
@@ -74,5 +74,5 @@ export const attributesSlice = createSlice<stateType, reducersType>({
     },
 });
 
-export const actions = attributesSlice.actions;
+export const attributesActions = attributesSlice.actions;
 export default attributesSlice.reducer;

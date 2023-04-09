@@ -210,7 +210,7 @@ const proto : prototypesTypes = {
     }
 }
 
-const base : (name: string, proto: Pick<GeneralAttribute, Mutated>)=>GeneralAttribute = (name, proto) => ({
+export const genAttribute : (name: string, proto: Pick<GeneralAttribute, Mutated>)=>GeneralAttribute = (name, proto) => ({
     ID: 0,
     CreatedAt: new Date().toString(),
     DeletedAt: undefined,

@@ -1,7 +1,4 @@
-.wrapper{
-    @apply flex flex-col gap-4;
-    width: 100%;
-}
+
 
 .add{
     @apply mx-4;
