@@ -1,21 +1,62 @@
+'use client'
 import { IData } from "./object.type";
 import Tabs from "../../../components/objects/panel/tabs/Tabs";
+import { url } from "@/app/api/config";
+import { Building } from "../building.type";
+import { useEffect, useState } from "react";
 
-async function getData(id: number) {
-  
-  const data : Partial<IData> = {
-      imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
-      name: "Дом на берегу моря",
-      type: "Жилое помещение",
-      id: 1,
-      rating: "55",
-      // taskCount: 2,
-      location: "ул. Колмогорова, 1, Москва",
-      region: "Центральный округ",
-      owner: "Имя обладателя",
-      description: "Результат строительства, представляющий собой объемное надземное строительное сооружение, включающую в себя помещения, предназначенные для проживания и (или) деятельности людей, размещения производства, хранения продукции или содержания животных, а также сети и системы инженерно-технического обеспечения."
+const proto : Partial<IData> = {
+  imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
+  name: "Дом на берегу моря",
+  type: "Жилое помещение",
+  id: 1,
+  rating: "55",
+  // taskCount: 2,
+  location: "ул. Колмогорова, 1, Москва",
+  region: "Центральный округ",
+  owner: "Имя обладателя",
+  description: "Результат строительства, представляющий собой объемное надземное строительное сооружение, включающую в себя помещения, предназначенные для проживания и (или) деятельности людей, размещения производства, хранения продукции или содержания животных, а также сети и системы инженерно-технического обеспечения."
+}
+
+async function getData(id: string, token: string | null) {
+  if(!token || !id || id.length === 0) {
+    return proto
   }
-  return data;
+  const res = await fetch('/api/getBasicParamsById', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: id,
+      token: token
+    })
+  })
+  if(!res.ok || res.status!== 200) {
+    return proto;
+  }
+  try {
+      const data: Partial<IData> = await res.json();
+      if(data) {
+        return data;
+      }
+  }
+  catch (e) {
+      return proto;
+  }
+  // const data : Partial<IData> = {
+  //     imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
+  //     name: "Дом на берегу моря",
+  //     type: "Жилое помещение",
+  //     id: 1,
+  //     rating: "55",
+  //     // taskCount: 2,
+  //     location: "ул. Колмогорова, 1, Москва",
+  //     region: "Центральный округ",
+  //     owner: "Имя обладателя",
+  //     description: "Результат строительства, представляющий собой объемное надземное строительное сооружение, включающую в себя помещения, предназначенные для проживания и (или) деятельности людей, размещения производства, хранения продукции или содержания животных, а также сети и системы инженерно-технического обеспечения."
+  // }
+  return proto;
 }
 
 import React from "react";
@@ -23,8 +64,20 @@ import Panel from "@/components/objects/panel/Panel";
 import style from "./layout.module.css";
 
 
-export default async function Layout({children, params}:{children : React.ReactNode, params:{id:string, dir?:string}}) {
-    const data = await getData(parseInt(params.id));
+export default function Layout({children, params}:{children : React.ReactNode, params:{id:string, dir?:string}}) {
+  const [data, setData] = useState<Partial<IData>>(proto);
+  useEffect(() => {
+    async function fetchData() {
+      if(params.id) {
+        getData(params.id, window.localStorage.getItem('token')).then((data) => {
+          if(data) {
+            setData(data)
+          }
+        });
+      }
+    }
+    fetchData();
+  }, [params.id]);
     return (
       <div className={style.layout}>
         <Panel data={data}>
