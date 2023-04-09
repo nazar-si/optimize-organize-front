@@ -19,20 +19,14 @@ export async function POST(request: Request) {
             attribute_ids: [-1, -2, -3, -4, -5, -6, -7]
         })
     })
-    // console.log(res.status)
-    // console.log(await res.text())
     if(!res.ok || res.status!== 200) {
         return NextResponse.json({status: res.status, message: res.statusText});
     }
-    // console.log('res successful')
     try {
-        // console.log(await res.text())
         const data: {buildings: Building[]} = await res.json();
         if(data && data.buildings) {
-            // console.log(data.buildings);
             let buildings: Array<Partial<IData>> = []
             data.buildings.forEach((building: Building) => {
-                // console.log(building.attributes)
                 buildings.push({
                     id: building.ID,
                     name: building.attributes?.find(obj => {return obj.attribute.attr_type == -1}).data,
@@ -45,12 +39,10 @@ export async function POST(request: Request) {
                     imageUrl: building.attributes?.find(obj => {return obj.attribute.attr_type == -9}).data,
                 });
             })
-            console.log('!', buildings)
             return NextResponse.json(buildings);
         }
     }
     catch (e) {
-        console.log(e);
         return NextResponse.json({status: res.status, message: res.statusText});
     }
     // return NextResponse.json({hello: 'world'});

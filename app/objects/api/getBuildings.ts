@@ -17,11 +17,9 @@ export default async function getBuildings () {
     try {
         const data = await res.json();
         if(data && data.buildings) {
-            console.log(data.buildings);
         }
     }
     catch(e) {
-        console.log(e);
         return -2;
     }
 }

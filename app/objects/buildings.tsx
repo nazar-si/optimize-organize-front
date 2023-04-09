@@ -21,7 +21,6 @@ export async function getData() {
     try {
         const data: {buildings: Building[]} = await res.json();
         if(data && data.buildings) {
-            // console.log(data.buildings);
             let buildings: Array<Partial<IData>> = []
             data.buildings.forEach((building: Building) => {
                 buildings.push({
@@ -30,12 +29,10 @@ export async function getData() {
                     
                 });
             })
-            console.log('!', buildings)
             return { buildings: data.buildings };
         }
     }
     catch(e) {
-        console.log(e);
         return {buildings: []};
     }
     return { buildings: []};
