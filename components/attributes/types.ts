@@ -7,8 +7,8 @@ export type Mutated = "data" | "type" | "permanent" | "parent" // значени
 export interface GeneralAttribute {
     ID: ID,
     CreatedAt: string,
-    DeletedAt?: string,
-    UpdatedAt: string,
+    DeletedAt?: string | null,
+    UpdatedAt: string | null,
     name: string,
     type?: number, 
     data : any,
@@ -17,7 +17,8 @@ export interface GeneralAttribute {
     parent: "task" 
             | "building" 
             | "any"         // может быть присоединен только к чему-то одному или ко всему (undefined)
-    single?: boolean        // является ли единственным в данном контексте
+    single?: boolean,       // является ли единственным в данном контексте
+    history?: Partial<GeneralAttribute>[]
 }
 
 export interface BuildingName extends GeneralAttribute {
