@@ -26,7 +26,7 @@ export async function POST(request: Request) {
         const data = await res.json();
         console.log(data)
         if(data.token !== undefined) {
-            NextResponse.next().cookies.set('token', data.token);
+            // NextResponse.next().cookies.set('token', data.token);
             console.log('success');
             // console.log(data.token)
             return NextResponse.redirect(new URL('/auth?token=' + data.token, request.url));

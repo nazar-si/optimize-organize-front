@@ -11,7 +11,7 @@ export default function Page(){
     useEffect(() => {
         if (token !== null && token) {
             window.localStorage.setItem('token', token);
-            router.push('/');
+            router.push('/objects');
         }
         else{
             router.push('/login');
