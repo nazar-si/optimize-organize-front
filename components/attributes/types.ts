@@ -80,12 +80,6 @@ export interface TaskName extends GeneralAttribute {
     permanent: true,
     parent: "task"
 }
-export interface TaskCount extends GeneralAttribute {
-    data: number,
-    type: 5,
-    permanent: true,
-    parent: "building"
-}
 // Комментарии к задаче (мини-чат)
 export interface Comments extends GeneralAttribute {
     data: Array<{person: ID, text: string}>,
