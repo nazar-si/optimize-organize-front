@@ -4,6 +4,7 @@ import type { IData } from '@/app/objects/[id]/object.type'
 import Card from '@/components/ui/Card'
 import { MapPin, Star, User, Checkbox } from 'tabler-icons-react'
 import { getNoun } from '@/utils/help'
+import Link from 'next/link'
 
 type Props = {
     data: Partial<IData>
@@ -11,7 +12,7 @@ type Props = {
 
 export default function Entry({data}: Props) {
   return (
-    <div className={style.card}>
+    <Link className={style.card} href={`/objects/${data.id}`}>
         <img src={data.imageUrl} alt="Изображение" />
         <div className={style.info}>
             <div className={style.title}>
@@ -41,6 +42,6 @@ export default function Entry({data}: Props) {
                 </div>}
             </div>
         </div>
-    </div>
+    </Link>
   )
 }

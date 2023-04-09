@@ -95,14 +95,10 @@ export default function Home() {
           <Input placeholder="Запрос для поиска"></Input>
         </Card>
         <div className={style.list}>
-          {/* <Buildings /> */}
-          <h1>Buildings</h1>
-            <div className={style.list}>
             {data && data.map((d, i) => (
                 <Entry key={i} data={d}></Entry>
             ))}
           </div>
-        </div>
       </main>
     </>
   )
