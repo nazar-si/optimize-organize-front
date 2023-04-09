@@ -34,7 +34,7 @@ export default function Panel(props: Props) {
           <div className={style.icon}>
             <Star size={16} />
           </div>
-          {data.rating}% <span className={style.count}>({data.taskCount})</span>
+          {data.rating}% <span className={style.count}>{data.taskCount ? "(" + data.taskCount + ")" : null}</span>
         </div>
         <div className={style.location}>
           <div className={style.icon}>
