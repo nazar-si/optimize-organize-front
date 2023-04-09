@@ -12,7 +12,7 @@ type dataType = {
   attributes: Array<GeneralAttribute> 
 }
 
-async function getData(id:number): dataType {
+async function getData(id:number): Promise<dataType> {
   // здесь мы тип от бэка получили массив атрибутов 
   const data: dataType = {
     basicData: {

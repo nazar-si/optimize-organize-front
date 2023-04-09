@@ -17,7 +17,7 @@ const tabs = [
     {title: "Задачи",       value: 0, link: "tasks",    icon: <Checkbox size={16}/>},
     {title: "Группы",       value: 1, link: "groups",   icon: <Users size={16}/>},
     {title: "Отчёт",        value: 2, link: "report",   icon: <ClipboardData size={16}/>},
-    {title: "Конференции",  value: 3, link: "meetings", icon: <DeviceComputerCamera size={16}/>},
+    {title: "Совещание",  value: 3, link: "meetings", icon: <DeviceComputerCamera size={16}/>},
 ]
 
 export default function Tabs({children, id}:Props) {

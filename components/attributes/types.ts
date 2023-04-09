@@ -13,10 +13,10 @@ export interface GeneralAttribute {
     type?: number, 
     data : any,
     edit: boolean,          // редактируется ли сейчас аттрибут 
-    permanent: boolean,    // неудаляемый
+    permanent: boolean,     // неудаляемый
     parent: "task" 
             | "building" 
-            | "any"     // может быть присоединен только к чему-то одному или ко всему (undefined)
+            | "any"         // может быть присоединен только к чему-то одному или ко всему (undefined)
     single?: boolean        // является ли единственным в данном контексте
 }
 
@@ -178,7 +178,7 @@ const proto : prototypesTypes = {
         parent: "building"
     },
     location: {
-        data: [55.75, 37.61], // Координаты Москвы
+        data: [55.75, 37.61],
         type: -6,
         permanent: true,
         parent: "any"
@@ -220,11 +220,13 @@ const proto : prototypesTypes = {
         parent: "task"
     },
     map: {
-        data: [55.75, 37.61], // Координаты Москвы
+        data: [55.75, 37.61],
         type: 7,
         permanent: false,
         parent: "any"
-    }
+    },
+    buildingType: undefined,
+    buildingImage: undefined
 }
 
 export const genAttribute : (name: string, proto: Pick<GeneralAttribute, Mutated>)=>GeneralAttribute = (name, proto) => ({
