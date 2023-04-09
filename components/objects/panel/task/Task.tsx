@@ -5,21 +5,21 @@ import style from "./task.module.css"
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import Input from '@/components/ui/Input';
-import { Pencil } from 'tabler-icons-react';
+import { Pencil, Calendar, Box } from 'tabler-icons-react';
 import { DateTimePicker } from '@mantine/dates';
+import { ITask } from './task.type';
+import { getNoun } from '@/utils/help';
 
-const data = {
-  name: ""
-}
 
 type Props = {
-  className?:string
+  className?:string,
+  data: ITask
 }
 
-export default function Task({className}: Props) {
+export default function Task({className, data}: Props) {
   const pathname = usePathname();
   const [changeName, setChangeName] = useState(false);
-  const [name, setName] = useState("Task Name");
+  const [name, setName] = useState(data.name);
   const inputRef = useRef<HTMLInputElement>(null);
   const lostFocus :React.FocusEventHandler = (e)=>{
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -47,8 +47,15 @@ export default function Task({className}: Props) {
             setChangeName(false);
         }} onBlur={lostFocus}/>
       </div>
-      <div onClick={Prevent}>
-        <DateTimePicker style={{border: "none"}} value={new Date()} />
+      <div onClick={Prevent} className={style.date}>
+        <Calendar size={16}/>
+        <DateTimePicker style={{border: "none"}} value={data.time} />
+      </div>
+      <div className={style.attributes}>
+        <Box size={16}>
+          {getNoun(data.attributesCount, "атрибут", "атрибута", "атрибутов")}
+
+        </Box>
       </div>
     </Link>
   )

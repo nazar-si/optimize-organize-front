@@ -7,6 +7,11 @@ type Props = {
 
 }
 
+const data = {
+  name: "Task Name",
+  time : new Date(),
+  attributesCount: 5
+}
 export default function TaskList({}: Props) {
   return (
     <>
@@ -18,9 +23,9 @@ export default function TaskList({}: Props) {
           <div>Дата</div>
           <div>Атрибуты</div>
         </div>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
       </div>
       <div className={style.block}>
         <div className={style.grid}>
@@ -30,9 +35,9 @@ export default function TaskList({}: Props) {
           <div>Дата</div>
           <div>Атрибуты</div>
         </div>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
       </div>
       <div className={style.block}>
         <div className={style.grid}>
@@ -42,9 +47,9 @@ export default function TaskList({}: Props) {
           <div>Дата</div>
           <div>Атрибуты</div>
         </div>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
       </div>
       <div className={style.block}>
         <div className={style.grid}>
@@ -54,9 +59,9 @@ export default function TaskList({}: Props) {
           <div>Дата</div>
           <div>Атрибуты</div>
         </div>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
-        <Task className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
+        <Task data={data} className={style.task}></Task>
       </div>
     </>
   )
