@@ -6,3 +6,8 @@
         width: 100%;
     }
 }
+
+.wrapper{
+    height: 100vh;
+    @apply flex flex-col;
+}

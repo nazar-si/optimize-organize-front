@@ -16,7 +16,7 @@ type Props = {
 export default function Editor({upload}: Props) {
   
   return (
-    <Provider store={store}>
+    <Provider store={store}> 
       <DataUpload data={upload}/>
       <SectionsList/>
     </Provider>

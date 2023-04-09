@@ -19,7 +19,7 @@ export default async function Page({
   }) {
 
     const data = await getData(parseInt(params.id));
-    return <div>
+    return <div className="flex flex-col h-[100vh]">
         <Topbar passName="Дом на берегу моря"></Topbar>
         <Editor upload={data /* Загружаем значения атрибутов в редактор */}></Editor> 
     </div>;

@@ -61,6 +61,7 @@ export default function Section({}: Props) {
     if (!name.length)
       return setNullNameError(true);
     setAddStage(0);
+    setSelectedType("");
     setName("");
     let s = options[selectedType.toString()].call;
     let prototype = genAttribute(name, proto[s]);
