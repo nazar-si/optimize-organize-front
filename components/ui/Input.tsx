@@ -13,16 +13,17 @@ type Props = {
     onKeyDown?:React.KeyboardEventHandler<HTMLInputElement>,
     value?:string,
     name?:string,
+    noMargins?: boolean
 }
 export type Ref = HTMLInputElement;
-const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, onKeyDown, name}: Props, ref) => {
+const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, onKeyDown, name, noMargins}: Props, ref) => {
     const code = Math.floor(Math.random() * 1e8).toString();
     return (
-        <div className={classNames(className, "my-1")}>
+        <div className={classNames({["my-1"]: !noMargins})}>
             <label htmlFor={"input-" + code} className='text-sm mb-1 font-medium'>{label}</label>
             <label
                 htmlFor={"input-" + code}
-                className='bg-white rounded-md border-gray-300 border-[1px] focus-within:border-blue-500 outline-none text-gray-700 focus-within:text-blue-500 placeholder:text-gray-400 w-[100%] h-[100%] transition-all flex items-center'
+                className={classNames('bg-white rounded-md border-gray-300 border-[1px] focus-within:border-blue-500 outline-none text-gray-700 focus-within:text-blue-500 placeholder:text-gray-400 w-[100%] h-[100%] transition-all flex items-center',  className)}
             >
                 <div className={'flex items-center justify-center px-2 opacity-70'}>
                     {children}
@@ -37,6 +38,7 @@ const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className,
                     onChange={onChange}
                     onKeyDown={onKeyDown}
                     name={name}
+                    value={value}
                     className='outline-none rounded-md m-0 pr-2 py-1 w-[100%]'
             /></label>
         </div>

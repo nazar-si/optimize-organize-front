@@ -11,7 +11,7 @@ export default function Page({
     searchParams: { [key: string]: string | string[] | undefined };
   }) {
     return <div>
-        <Topbar></Topbar>
+        <Topbar passName="Дом на берегу моря"></Topbar>
         <Editor></Editor>
     </div>;
   }
