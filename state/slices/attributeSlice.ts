@@ -35,6 +35,7 @@ export const attributesSlice = createSlice<stateType, reducersType>({
     initialState,
     reducers: {
         load: (state, action) => {
+            state.attributes = new Map<ID, GeneralAttribute>();
             action.payload.forEach(a => {
                 state.attributes.set(a.ID, a);
             })
