@@ -5,9 +5,11 @@ import Header from "@/components/objects/header/Header";
 import Input from "@/components/ui/Input";
 import Card from "@/components/ui/Card";
 import getBuildings from "./api/getBuildings";
+import Buildings from './buildings'
+
 
 async function getData() {
-  
+
   const data : Array<Partial<IData>> = [
     {
         imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
@@ -48,9 +50,13 @@ export default async function Home() {
           <Input placeholder="Запрос для поиска"></Input>
         </Card>
         <div className={style.list}>
-          {data.map((d, i) => (
-            <Entry key={i} data={d}></Entry>
-          ))}
+          {/* <Buildings buildings={[]} /> */}
+          <h1>Buildings</h1>
+            <div className={style.list}>
+            {data.map((d, i) => (
+                <Entry key={i} data={d}></Entry>
+            ))}
+          </div>
         </div>
       </main>
     </>
