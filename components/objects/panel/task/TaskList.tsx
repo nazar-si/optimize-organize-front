@@ -7,10 +7,10 @@ import { ITask } from './task_old.type'
 type Props = {
 
 }
-const time = new Date().toLocaleDateString("ru-RU");
 const data : ITask = {
   name: "Task Name",
-  time : time,
+  time : new Date().toLocaleDateString("ru-RU"),
+  done: false,
   attributesCount: 5
 }
 export default function TaskList({}: Props) {
