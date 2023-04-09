@@ -65,9 +65,24 @@ export interface Quality extends GeneralAttribute {
     permanent: true,
     parent: "building"
 }
+
+export interface BuildingType extends GeneralAttribute {
+    data: number,
+    type: -8,
+    permanent: true,
+    parent: "building"
+}
+
+export interface BuildingImage extends GeneralAttribute {
+    data: number,
+    type: -9,
+    permanent: true,
+    parent: "building"
+}
+
 export interface TaskName extends GeneralAttribute {
     data: string,
-    type: -8,
+    type: -101,
     permanent: true,
     parent: "task"
 }
@@ -75,7 +90,7 @@ export interface TaskName extends GeneralAttribute {
 // Комментарии к задаче (мини-чат)
 export interface Comments extends GeneralAttribute {
     data: Array<{person: ID, text: string}>,
-    type: -9,
+    type: -1000,
     permanent: true,
     parent: "task"
 }
@@ -116,6 +131,8 @@ export type prototypesTypes = {
     district: Pick<District, Mutated>
     location: Pick<Location, Mutated>
     quality: Pick<Quality, Mutated>
+    buildingType: Pick<BuildingType, Mutated>
+    buildingImage: Pick<BuildingImage, Mutated>
     image: Pick<Image, Mutated>
     file: Pick<File, Mutated>
     video: Pick<Video, Mutated>
@@ -174,7 +191,7 @@ const proto : prototypesTypes = {
     },
     taskName: {
         data: "Название задачи",
-        type: -8,
+        type: -101,
         permanent: true,
         parent: "task"
     },
@@ -198,7 +215,7 @@ const proto : prototypesTypes = {
     },
     comments: {
         data: [],
-        type: -9,
+        type: -1000,
         permanent: true,
         parent: "task"
     },

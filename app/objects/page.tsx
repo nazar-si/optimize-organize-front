@@ -82,36 +82,40 @@ export default function Home() {
       }
       else {
         let data = await getData(token)
-        setData(data.sort())
+        // setData(data.sort())
+        setData(data)
       }
     }
     fetchData()
   }, [])
   
-  const [searchQuery, setSearchQuery] = useState("");
-  const Search = (value: string)=>{
-    setSearchQuery(value);
-    if (!value) 
-      data.sort();
-    let data_copy = data.slice();
-    data_copy.sort((a, b)=>{
-      let ac = token_similarity_sort_ratio(value, `${a.description} ${a.owner} ${a.name}`)
-      let bc = token_similarity_sort_ratio(value, `${b.description} ${b.owner} ${b.name}`)
-      return ac == bc ? 0: ac > bc? -1: 1
-    })
-    setData(data_copy)
-  }
+  // const [searchQuery, setSearchQuery] = useState("");
+  // const Search = (value: string)=>{
+  //   if(!data || data === undefined || data.length === 0) {
+  //     return;
+  //   }
+  //   setSearchQuery(value);
+  //   if (!value) 
+  //     data.sort();
+  //   let data_copy = data.slice();
+  //   data_copy.sort((a, b)=>{
+  //     let ac = token_similarity_sort_ratio(value, `${a.description} ${a.owner} ${a.name}`)
+  //     let bc = token_similarity_sort_ratio(value, `${b.description} ${b.owner} ${b.name}`)
+  //     return ac == bc ? 0: ac > bc? -1: 1
+  //   })
+  //   setData(data_copy)
+  // }
   return (
     <>
       <Header/>
       <main className={style.wrapper}>
         <Card className={style.bar}>
-          <Input placeholder="Запрос для поиска" onChange={(e)=>Search(e.target.value)} value={searchQuery}></Input>
+          {/* <Input placeholder="Запрос для поиска" onChange={(e)=>Search(e.target.value)} value={searchQuery}></Input> */}
         </Card>
         <div className={style.list}>
-            {data && data.map((d, i) => (
+            {data && data !== undefined && data.length != 0 ? data.map((d, i) => (
                 <Entry key={i} data={d}></Entry>
-            ))}
+            )) : null}
           </div>
       </main>
     </>

@@ -4,7 +4,7 @@ export type IData = {
     type?: string,       // тип 
     description?: string,// описание 
     id: number,         // ID
-    rating?: number,     // рейтинг / состояние 
+    rating?: string,     // рейтинг / состояние 
     taskCount?: number,  // количество задач
     location?: string,   // адерс - улица + город 
     region?: string      // округ + район  
