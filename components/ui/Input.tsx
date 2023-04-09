@@ -5,22 +5,24 @@ type Props = {
     label?: string,
     placeholder?:string,
     type?: "text" | "password",
-    className?:string 
+    className?:string,
+    containerClassName?: string,
     children?:React.ReactNode,
     autocomplete?:string,
     onClick?:React.MouseEventHandler<HTMLInputElement>,
     onChange?:React.ChangeEventHandler<HTMLInputElement>,
     onKeyDown?:React.KeyboardEventHandler<HTMLInputElement>,
+    onBlur?:React.FocusEventHandler<HTMLInputElement>,
     value?:string,
     name?:string,
     noMargins?: boolean,
     error?: boolean
 }
 export type Ref = HTMLInputElement;
-const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, onKeyDown, name, noMargins, error}: Props, ref) => {
+const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className, containerClassName, children, autocomplete, value, onClick, onChange, onKeyDown, onBlur, name, noMargins, error}: Props, ref) => {
     const code = Math.floor(Math.random() * 1e8).toString();
     return (
-        <div className={classNames({["my-1"]: !noMargins})}>
+        <div className={classNames(containerClassName,{["my-1"]: !noMargins})}>
             <label htmlFor={"input-" + code} className='text-sm mb-1 font-medium'>{label}</label>
             <label
                 htmlFor={"input-" + code}
@@ -38,6 +40,7 @@ const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className,
                     onClick={onClick}
                     onChange={onChange}
                     onKeyDown={onKeyDown}
+                    onBlur={onBlur}
                     name={name}
                     value={value}
                     className='outline-none rounded-md m-0 pr-2 py-1 w-[100%] bg-transparent'

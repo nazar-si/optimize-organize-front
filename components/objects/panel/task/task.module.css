@@ -1,0 +1,12 @@
+.task{
+    @apply bg-white border-gray-300 border-[1px] border-b-0 transition-all;
+    display: grid;
+    grid-template-columns: 4fr 1fr 128px ;
+    width: 100%;
+    &:hover{
+        @apply bg-gray-50 text-blue-500;
+    }
+    .title{
+        @apply px-2 py-1 flex items-center gap-2;
+    }
+}
