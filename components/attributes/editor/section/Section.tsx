@@ -12,7 +12,7 @@ export default function Section({data}: Props) {
     console.log(text);
     return (
         <Card className={style.wrapper}>
-            <p>{text}</p>
+            {text.split("\n").map(e=><p>{e}</p>)}
         </Card>
     )
 }

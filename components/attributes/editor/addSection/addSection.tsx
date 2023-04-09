@@ -63,10 +63,10 @@ export default function Section({}: Props) {
     setAddStage(0);
     setName("");
     let s = options[selectedType.toString()].call;
+    let prototype = genAttribute(name, proto[s]);
+    prototype.edit = true;
     dispatch(
-      attributesActions.add({
-        prototype: genAttribute(name, proto[s])
-      })
+      attributesActions.add({prototype})
     )
   }
   return (
