@@ -65,6 +65,7 @@ export default function Section({}: Props) {
     setName("");
     let s = options[selectedType.toString()].call;
     let prototype = genAttribute(name, proto[s]);
+    dispatch(attributesActions.resetEdit());
     prototype.edit = true;
     dispatch(
       attributesActions.add({prototype})

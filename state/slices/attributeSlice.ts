@@ -26,7 +26,9 @@ type reducersType = {
         id: ID,
         params: Partial<GeneralAttribute>, // часть параметров из основного атрибута
         // ... Параметры, которые нужны бэкенду
-    }}) => void
+    }}) => void,
+    setEdit: (state: stateType, action: {type: string, payload:{id: ID, value: boolean}}) => void, 
+    resetEdit: (state: stateType) => void,
 }
 
 
@@ -71,6 +73,16 @@ export const attributesSlice = createSlice<stateType, reducersType>({
 
             // И код, чтобы обновить на БД: 
             // ... 
+        },
+        setEdit: (state, action) => {
+            let a = state.attributes.get(action.payload.id);
+            if (!a) return 
+            a.edit = action.payload.value;
+        },
+        resetEdit: (state) => {
+            state.attributes.forEach(a=>{
+                a.edit = false;
+            })
         }
     },
 });

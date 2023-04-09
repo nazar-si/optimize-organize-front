@@ -19,31 +19,42 @@
 }
 
 .wrapper{
-    @apply hover:border-blue-500;
+    @apply hover:border-blue-500 !p-0;
     .options{
         position: absolute;
         top: -32px;
         height: 32px;
         left: 1rem;
-        opacity: 0;
         transition: 0.3s;
         z-index: -2;
-        @apply border-[1px] border-blue-500 rounded-t-md;
+        @apply border-[1px] border-transparent rounded-t-md;
         @apply flex gap-1 items-end px-2;
-        @apply border-b-gray-50 bg-gray-50;
+        @apply border-b-transparent bg-transparent;
         .button{
             transform: scale(0.8) translateY(0.25rem);
             transition: 0.3s;
             box-shadow: 0 0 0 0px #08f;
-            @apply w-8 h-8 border-[1px] border-gray-300 bg-white flex items-center justify-center rounded-md;
+            @apply w-8 h-8 border-[1px] border-gray-300 bg-white flex items-center justify-center rounded-md gap-2;
             &:hover{
                 transform: scale(1) translateY(0.25rem);
                 box-shadow: 0 0 0 .25rem #08f0;
                 @apply border-blue-500 bg-blue-500 text-white;
             }
+            opacity: 0;
         }
     }
     &:hover .options{
+        @apply border-blue-500 border-b-gray-50 bg-gray-50;
+        .button{
+            opacity: 1;
+        }
+    }
+    .name{
+        @apply font-medium mb-2;
+    }
+    .button.force{
         opacity: 1;
+        @apply border-blue-500 bg-blue-500 text-white;
+        box-shadow: 0 0 0 4px #08f4;
     }
 }

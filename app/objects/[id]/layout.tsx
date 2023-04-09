@@ -6,7 +6,7 @@ import { Building } from "../building.type";
 import { useEffect, useState } from "react";
 
 const proto : Partial<IData> = {
-  imageUrl: "https://tailwindcss.com/_next/static/media/beach-house.9b9ee168.jpg",
+  imageUrl: "https://images.unsplash.com/photo-1479839672679-a46483c0e7c8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1010&q=80",
   name: "Дом на берегу моря",
   type: "Жилое помещение",
   id: 1,

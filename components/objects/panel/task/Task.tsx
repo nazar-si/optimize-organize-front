@@ -54,7 +54,7 @@ export default function Task({className, data}: Props) {
       </div>
       <div className={style.attributes}>
         <Box size={16}>
-        {getNoun(data.attributesCount, "атрибут", "атрибута", "атрибутов")}
+        {getNoun(data.attributesCount, "атрибут", "атрибута", "атрибутов", true)}
         </Box>
       </div>
     </Link>
