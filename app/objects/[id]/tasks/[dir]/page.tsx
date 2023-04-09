@@ -22,7 +22,7 @@ export default async function Page({
   params: { id: string, dir: string };
   searchParams: { [key: string]: string | string[] | undefined };
 }) {
-
+    console.log(params.id, params.dir)
     const {data, name} = await getData(parseInt(params.id), parseInt(params.dir));
     return <div className="flex flex-col h-[100vh]">
         <Topbar passName={name} changeable objectId={parseInt(params.id)} taskId={parseInt(params.dir)}/>
