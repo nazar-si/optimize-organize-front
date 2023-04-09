@@ -6,6 +6,7 @@ import { IData } from '@/app/objects/[id]/object.type';
 export async function POST(request: Request) {
     const reqBody = await request.json()
     const res = await fetch(url + 'buildings/get-buildings', {
+        cache: 'no-store',
         mode: 'cors',
         credentials: "include",
         method: 'POST',

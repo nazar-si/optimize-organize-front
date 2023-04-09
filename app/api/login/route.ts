@@ -7,6 +7,7 @@ export async function POST(request: Request) {
     const reqBody = await urlCodeJson.decode(await request.text());
     if(reqBody.email === undefined || reqBody.password === undefined) redirect('/login');
     const res = await fetch(url + 'auth/auth-user', {
+        cache: 'no-store',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

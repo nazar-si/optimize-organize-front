@@ -9,6 +9,7 @@ export async function POST(request: Request) {
         redirect('/signup');
     }
     const res = await fetch(url + 'users/create-user', {
+        cache: 'no-store',
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
