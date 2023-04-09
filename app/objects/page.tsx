@@ -17,11 +17,7 @@ async function getData(token: string) {
   const res = await fetch('/api/getBuildings', {
     method: 'POST',
     headers: {
-      // 'Access-Control-Allow-Headers': 'Content-Type',
-      // 'Access-Control-Allow-Credentials': true,
       'Content-Type': 'application/json',
-      // 'Accept': '*/*',
-      // 'Access-Control-Allow-Credentials': 'true'
     },
     body: JSON.stringify({
       token: token
@@ -47,7 +43,7 @@ async function getData(token: string) {
         name: "Дом на берегу моря",
         type: "Жилое помещение",
         id: 1,
-        rating: 55,
+        rating: "55",
         taskCount: 2,
         location: "ул. Колмогорова, 1, Москва",
         region: "Центральный округ",
@@ -59,7 +55,7 @@ async function getData(token: string) {
         name: "Элитные апартаменты",
         type: "Жилое помещение",
         id: 2,
-        rating: 100,
+        rating: "100",
         taskCount: 3,
         location: "ул. Амурская, 1Ак3, Москва",
         region: "Округ Гольяново",
