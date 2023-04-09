@@ -10,11 +10,12 @@ type Props = {
     autocomplete?:string,
     onClick?:React.MouseEventHandler<HTMLInputElement>,
     onChange?:React.ChangeEventHandler<HTMLInputElement>,
+    onKeyDown?:React.KeyboardEventHandler<HTMLInputElement>,
     value?:string,
-    name?:string
+    name?:string,
 }
-
-export default function Input({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, name}: Props) {
+export type Ref = HTMLInputElement;
+const Input = React.forwardRef<Ref,Props>(({placeholder, label, type, className, children, autocomplete, value, onClick, onChange, onKeyDown, name}: Props, ref) => {
     const code = Math.floor(Math.random() * 1e8).toString();
     return (
         <div className={classNames(className, "my-1")}>
@@ -27,15 +28,19 @@ export default function Input({placeholder, label, type, className, children, au
                     {children}
                 </div>
                 <input
+                    ref={ref}
                     autoComplete={type + " " + autocomplete}
                     type={type?type:"text"}
                     id={'input-' + code} 
                     placeholder={placeholder}
                     onClick={onClick}
                     onChange={onChange}
+                    onKeyDown={onKeyDown}
                     name={name}
                     className='outline-none rounded-md m-0 pr-2 py-1 w-[100%]'
             /></label>
         </div>
     )
-}
+})
+
+export default Input; 

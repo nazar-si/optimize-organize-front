@@ -2,9 +2,25 @@
     @apply m-4;
 }
 .card{
-    @apply flex justify-center;
-    @apply focus-within:border-blue-500;
+    @apply flex justify-center items-center flex-col;
+    @apply focus-within:border-blue-500 gap-2;
+    .row{
+        @apply flex gap-4  items-center h-10;
+        transition: 0.3s;
+        &.hide{
+            opacity: 0;
+            margin-top: -.5rem;
+            height: 0;  
+            pointer-events: none
+        }
+    }
     &.noState{
-        @apply bg-transparent shadow-none border-dashed;
+        @apply bg-transparent shadow-none border-dashed overflow-hidden;
+    }
+    .option{
+        @apply h-10 px-0 w-10;
+        &.selected{
+            @apply border-blue-500 text-blue-500;
+        }
     }
 }

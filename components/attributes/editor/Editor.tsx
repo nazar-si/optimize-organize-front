@@ -1,3 +1,6 @@
+"use client"
+import { Provider } from 'react-redux'
+import { store } from '@/state/stores/store'
 import React from 'react'
 import style from "./editor.module.css"
 import { Plus } from 'tabler-icons-react'
@@ -9,8 +12,10 @@ type Props = {}
 export default function Editor({}: Props) {
   
   return (
-    <div className={style.wrapper}>
-        <Section/>
-    </div>
+    <Provider store={store}>
+      <div className={style.wrapper}>
+          <Section/>
+      </div>
+    </Provider>
   )
 }

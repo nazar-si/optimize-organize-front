@@ -1,6 +1,6 @@
 export type ID = number 
 export type FileID = number 
-export type Extra = "parent" | "permanent" | "single" // лишние для бэка ключи 
+export type Extra = "parent" | "permanent" | "single" | "edit" // лишние для бэка ключи 
 export interface GeneralAttribute {
     ID: ID,
     CreatedAt: string,
@@ -9,6 +9,7 @@ export interface GeneralAttribute {
     name: string,
     type?: number, 
     data : any,
+    edit: boolean,          // редактируется ли сейчас аттрибут 
     permanent?: boolean,    // неудаляемый
     parent?: "task" 
             | "building" 
