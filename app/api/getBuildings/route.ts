@@ -16,7 +16,7 @@ export async function POST(request: Request) {
         },
         body: JSON.stringify({
             filters: [],
-            attribute_ids: [-1, -2, -3, -4, -5, -6, -7]
+            attribute_ids: [-1, -2, -3, -4, -5, -6, -7, -8, -9]
         })
     })
     if(!res.ok || res.status!== 200) {
@@ -29,14 +29,14 @@ export async function POST(request: Request) {
             data.buildings.forEach((building: Building) => {
                 buildings.push({
                     id: building.ID,
-                    name: building.attributes?.find(obj => {return obj.attribute.attr_type == -1}).data,
-                    description: building.attributes?.find(obj => {return obj.attribute.attr_type == -2}).data,
-                    rating: building.attributes?.find(obj => {return obj.attribute.attr_type == -7}).data,
-                    location: building.attributes?.find(obj => {return obj.attribute.attr_type == -4}).data,
-                    region: building.attributes?.find(obj => {return obj.attribute.attr_type == -5}).data,
-                    owner: building.attributes?.find(obj => {return obj.attribute.attr_type == -3}).data,
-                    type: building.attributes?.find(obj => {return obj.attribute.attr_type == -8}).data,
-                    imageUrl: building.attributes?.find(obj => {return obj.attribute.attr_type == -9}).data,
+                    name: building.attributes?.find(obj => {return obj.attribute.attr_type == -1})?.data,
+                    description: building.attributes?.find(obj => {return obj.attribute.attr_type == -2})?.data,
+                    rating: building.attributes?.find(obj => {return obj.attribute.attr_type == -7})?.data,
+                    location: building.attributes?.find(obj => {return obj.attribute.attr_type == -4})?.data,
+                    region: building.attributes?.find(obj => {return obj.attribute.attr_type == -5})?.data,
+                    owner: building.attributes?.find(obj => {return obj.attribute.attr_type == -3})?.data,
+                    type: building.attributes?.find(obj => {return obj.attribute.attr_type == -8})?.data,
+                    imageUrl: building.attributes?.find(obj => {return obj.attribute.attr_type == -9})?.data,
                 });
             })
             return NextResponse.json(buildings);
