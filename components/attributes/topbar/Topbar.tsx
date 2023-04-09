@@ -20,6 +20,7 @@ export default function Topbar({passName, changeable, taskId, objectId}: Props) 
   const [name, setName] = useState(passName);
   const updateName = (value: string)=>{
     setName(value);
+    // Здесь код для запроса, чтобы обновить имя на бэке 
   }
   return (
     <div className={style.topbar}>
