@@ -10,7 +10,7 @@ type Props = {
 }
 
 import React, { forwardRef, useImperativeHandle, useState } from 'react'
-const ImageSection = forwardRef<AttributeSaverRef, Props>(({data}, ref) =>{
+const MapSection = forwardRef<AttributeSaverRef, Props>(({data}, ref) =>{
     const dispatch = useAppDispatch();
     const [pseudoName, setPseudoName] = useState(data.name);
     useImperativeHandle(ref, ()=>({
@@ -33,4 +33,4 @@ const ImageSection = forwardRef<AttributeSaverRef, Props>(({data}, ref) =>{
     )
 })
 
-export default ImageSection;
+export default MapSection;

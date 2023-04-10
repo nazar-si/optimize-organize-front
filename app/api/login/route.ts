@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { redirect } from 'next/navigation';
-import urlCodeJson from 'urlcode-json';
+const urlCodeJson = require('urlcode-json');
 import {url} from '../config'
 
 export async function POST(request: Request) {
@@ -24,8 +24,6 @@ export async function POST(request: Request) {
         const data = await res.json();
         if(data.token !== undefined) {
             // NextResponse.next().cookies.set('token', data.token);
-            console.log('success');
-            // console.log(data.token)
             return NextResponse.redirect(new URL('/auth?token=' + data.token, request.url));
         }   
         redirect('/login');

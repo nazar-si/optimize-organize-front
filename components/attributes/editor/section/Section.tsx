@@ -10,6 +10,7 @@ import { attributesActions } from '@/state/slices/attributeSlice'
 import classNames from 'classnames'
 import Input from '@/components/ui/Input'
 import ImageSection from './ImageSection'
+import MapSection from './MapSection'
 
 
 type Props = {
@@ -51,6 +52,7 @@ export default function Section({data}: Props) {
                 </button>
             </div>
             {data.type==1 && <ImageSection data={data} ref={ref}/>}
+            {data.type==4 && <MapSection data={data} ref={ref}/> }
         </Card>
     )
 }

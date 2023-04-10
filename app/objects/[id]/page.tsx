@@ -63,9 +63,6 @@ export default function Page({
         setData(data);
       });
     }, [params.id]);
-    useEffect(()=>{
-      console.log(data);
-    }, [data])
 
     return <div className="flex flex-col h-[100vh]">
         <Topbar passName={data.basicData?.name}></Topbar>
