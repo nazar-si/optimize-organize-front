@@ -1,5 +1,5 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { GeneralAttribute } from '../../types'
 import Card from '@/components/ui/Card'
 import style from "./section.module.css"
@@ -19,12 +19,17 @@ export type AttributeSaverRef = {Save: ()=>void}
 
 export default function Section({data}: Props) {
     const text = JSON.stringify(data, null, ' ').replace(/: {/g, `${' '.repeat(5)}: \{`).replace(/: \{\n\s+/g, ': {').replace(/",\n\s+/g, ', ').replace(/"\n\s+\}/g, '}'); //Done all at once
+    const [token, setToken] = useState<string | null>();
     const dispatch = useAppDispatch();
     const edit = data.edit;
     const ref = useRef<AttributeSaverRef>(null);
     const Delete = ()=>{
-        dispatch(attributesActions.remove(data.ID))
+        if(token)
+            dispatch(attributesActions.remove({ID: data.ID, token: token}))
     } 
+    useEffect(()=>{
+        setToken(localStorage.getItem('token'))
+    },[])
     const setEdit = ()=>{
         if (edit){
             ref.current?.Save();

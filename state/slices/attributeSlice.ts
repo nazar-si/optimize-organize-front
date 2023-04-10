@@ -1,10 +1,11 @@
 import { GeneralAttribute, ID } from "@/components/attributes/types";
 import { createSlice } from "@reduxjs/toolkit";
 import { enableMapSet } from 'immer'
+import { url } from "@/app/api/config"
 enableMapSet()
 
 export type stateType = {
-    attributes: Map<ID, GeneralAttribute>; 
+    attributes: Map<ID, GeneralAttribute>;
 }
 
 const initialState:stateType = {
@@ -15,7 +16,7 @@ type reducersType = {
     // Подгрузить начальные атрибуты, чтобы отобразить 
     load: (state: stateType, action: {type: string, payload: Array<GeneralAttribute>}) => void
     // Удалить значение атрибута (attribute_value)
-    remove: (state: stateType, action: {type: string, payload: ID}) => void 
+    remove: (state: stateType, action: {type: string, payload: {ID: ID, token?: string}}) => void 
     // Создать значение атрибута
     add: (state: stateType, action: {type: string, payload: {
         prototype: GeneralAttribute,
@@ -38,15 +39,27 @@ export const attributesSlice = createSlice<stateType, reducersType>({
     reducers: {
         load: (state, action) => {
             state.attributes = new Map<ID, GeneralAttribute>();
-            action.payload.forEach(a => {
+            if(action && action?.payload) action.payload.forEach(a => {
                 state.attributes.set(a.ID, a);
             })
         },
         remove: (state, action) => {
-            state.attributes.delete(action.payload);
-            
-            // И код, чтобы удалить из БД: 
-            // ... 
+            state.attributes.delete(action.payload.ID);
+            if(action.payload.token){
+                fetch('/api/deleteAttributeValue', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        "attribute_id": 14,
+                        "building_id": 2,
+                        "token": action.payload.token
+                    })
+                })
+            }
+                // И код, чтобы удалить из БД: 
+                // ... 
         },
         add: (state, action) => {
             // Здесь код на создание значения атрибута на бэке 

@@ -68,7 +68,7 @@ export default function Page({
     }, [data])
 
     return <div className="flex flex-col h-[100vh]">
-        <Topbar passName={data.basicData.name}></Topbar>
+        <Topbar passName={data.basicData?.name}></Topbar>
         <Editor upload={data.attributes /* Загружаем значения атрибутов в редактор */}></Editor> 
     </div>;
   }
