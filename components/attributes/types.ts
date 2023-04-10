@@ -226,8 +226,18 @@ const proto : prototypesTypes = {
         permanent: false,
         parent: "any"
     },
-    buildingType: undefined,
-    buildingImage: undefined
+    buildingType: {
+        data: 0,
+        type: -8,
+        permanent: true,
+        parent: "building"
+    },
+    buildingImage: {
+        data: 0,
+        type: -9,
+        permanent: true,
+        parent: "building"
+    }
 }
 
 export const genAttribute : (name: string, proto: Pick<GeneralAttribute, Mutated>)=>GeneralAttribute = (name, proto) => ({

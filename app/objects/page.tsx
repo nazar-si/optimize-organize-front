@@ -26,14 +26,11 @@ async function getData(token: string) {
   if(!res.ok) {
     return [];
   }
-  // console.log('!', await res.text())
   try {
     const data: Array<Partial<IData>> = await res.json();
-    console.log(data)
     return data;
   }
   catch(e) {
-    console.log(e);
     return [];
   }
   return [];

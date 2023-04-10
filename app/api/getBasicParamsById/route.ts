@@ -5,7 +5,6 @@ import { IData } from '@/app/objects/[id]/object.type';
 
 export async function POST(request: Request) {
     const reqBody = await request.json(); 
-    console.log(reqBody);
     const res = await fetch(url + 'buildings/get-building-byid/' + reqBody.id, {
         method: 'GET',
         headers: {
@@ -41,11 +40,6 @@ export async function POST(request: Request) {
 }
 
 
-
-
-
-
-
 // const res = await fetch(url + 'buildings/get-building-byid/2', {
 //     method: 'GET',
 //     headers: {
@@ -56,7 +50,6 @@ export async function POST(request: Request) {
 //   if(!res.ok || res.status!== 200) {
 //     return {name: "Неизвестная ошибка"};
 //   }
-//   console.log(res.status)
 //   try {
 //       const data: {building: Building} = await res.json();
 //       if(data && data.building) {
@@ -71,7 +64,6 @@ export async function POST(request: Request) {
 //               type: data.building.attributes?.find(obj => {return obj.attribute.attr_type == -8})?.data,
 //               imageUrl: data.building.attributes?.find(obj => {return obj.attribute.attr_type == -9})?.data,
 //           }
-//           console.log(building)
 //           return building;
 //       }
 //   }
