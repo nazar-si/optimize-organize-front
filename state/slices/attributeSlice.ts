@@ -16,7 +16,7 @@ type reducersType = {
     // Подгрузить начальные атрибуты, чтобы отобразить 
     load: (state: stateType, action: {type: string, payload: Array<GeneralAttribute>}) => void
     // Удалить значение атрибута (attribute_value)
-    remove: (state: stateType, action: {type: string, payload: {ID: ID, token?: string}}) => void 
+    remove: (state: stateType, action: {type: string, payload: {ID: ID, token?: string, building: number}}) => void 
     // Создать значение атрибута
     add: (state: stateType, action: {type: string, payload: {
         prototype: GeneralAttribute,
@@ -52,7 +52,7 @@ export const attributesSlice = createSlice<stateType, reducersType>({
                         'Content-Type': 'application/json'
                     },
                     body: JSON.stringify({
-                        "attribute_id": 14,
+                        "attribute_id": action.payload.ID,
                         "building_id": 2,
                         "token": action.payload.token
                     })
